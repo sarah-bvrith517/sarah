@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>College Fest Registration Form</title>
+  <style>
+    /* Body and page container */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 40px auto;
+      max-width: 720px;
+      padding: 20px;
+      box-sizing: border-box;
+      border: 4px solid #a3d977; /* bright green border */
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(163, 217, 119, 0.5);
+      
+      /* Background image */
+      background-image: url('festt.jpg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover; /* fill entire area, may upscale image */
+      background-attachment: fixed; /* image stays fixed on scroll */
+      color: #fff; /* for contrast */
+      position: relative; 
+    }
+
+    /* Overlay to darken the background for readability */
+    body::before {
+      content: "";
+      position: fixed; /* cover entire viewport */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55); /* semi-transparent black */
+      z-index: -1;
+      border-radius: 15px;
+    }
+
+    /* Make form background white and slightly transparent */
+    form {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      color: #2b3a11; /* dark olive green text */
+    }
+
+    h2 {
+      text-align: center;
+      color: #d4e157; /* bright yellow-green */
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      font-weight: 700;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #6b8e23; /* olive green */
+      user-select: none;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 6px;
+      box-sizing: border-box;
+      border: 2px solid #cddc39; /* lime green */
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      background-color: #f9fbe7; /* light yellow */
+      color: #4a581e; /* dark olive */
+      font-weight: 600;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #dce775; /* bright lime */
+      box-shadow: 0 0 8px #c0ca33aa;
+      outline: none;
+      background-color: #fffde7;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 14px;
+      width: 100%;
+      font-size: 18px;
+      background-color: #cddc39; /* lime green */
+      border: none;
+      color: #2e3d00; /* very dark olive */
+      cursor: pointer;
+      border-radius: 10px;
+      font-weight: 700;
+      box-shadow: 0 4px 8px #afb42baa;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #9eab00; /* darker lime green */
+      box-shadow: 0 6px 12px #afb42dcc;
+      color: #f9fbe7;
+    }
+
+    /* Scrollable events box styling */
+    .scroll-box {
+      height: 160px; /* enough height for scrollbar */
+      overflow-y: auto;
+      border: 2px solid #dce775; /* lime border */
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #f0f4c3; /* pale lime */
+      box-shadow: inset 0 0 8px #dce775aa;
+      margin-top: 8px;
+    }
+
+    /* Flex container for checkbox + label for perfect alignment */
+    .scroll-box > div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.2s ease;
+      padding: 4px 6px;
+      border-radius: 6px;
+    }
+
+    .scroll-box > div:hover {
+      background-color: #e6ee9c; /* pale yellow-green highlight */
+    }
+
+    /* Checkbox styling */
+    .scroll-box input[type="checkbox"] {
+      margin-right: 12px;
+      width: 18px;
+      height: 18px;
+      accent-color: #cddc39; /* lime accent */
+      cursor: pointer;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      body {
+        margin: 20px 10px;
+        max-width: 100%;
+      }
+      .scroll-box {
+        height: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>College Fest Registration Form</h2>
+
+  <form action="/submit-fest-registration" method="POST">
+    <label for="fullname">Full Name *</label>
+    <input type="text" id="fullname" name="fullname" required />
+
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="college_name">College Name *</label>
+    <input type="text" id="college_name" name="college_name" required />
+
+    <label for="phone">Phone Number *</label>
+    <input type="tel" id="phone" name="phone" required />
+
+    <label for="dob">Date of Birth *</label>
+    <input type="date" id="dob" name="dob" required />
+
+    <label for="gender">Gender *</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="branch">Branch/Department *</label>
+    <select id="branch" name="branch" required>
+      <option value="">Select Branch</option>
+      <option value="CSE">CSE</option>
+      <option value="ECE">ECE</option>
+      <option value="IT">IT</option>
+      <option value="datascience">CSE - Data Science</option>
+      <option value="mech">MECH</option>
+      <option value="EEE">EEE</option>
+    </select>
+
+    <label for="year">Year of Study *</label>
+    <select id="year" name="year" required>
+      <option value="">Select Year</option>
+      <option value="1st">1st Year</option>
+      <option value="2nd">2nd Year</option>
+      <option value="3rd">3rd Year</option>
+      <option value="4th">4th Year</option>
+      <option value="Graduated">Graduated</option>
+    </select>
+
+    <label>Select Events to Participate In *</label>
+    <div class="scroll-box" tabindex="0" aria-label="Select events to participate in">
+      <div>
+        <input type="checkbox" id="dance" name="events[]" value="dance" />
+        <label for="dance">Dance Competition</label>
+      </div>
+      <div>
+        <input type="checkbox" id="music" name="events[]" value="music" />
+        <label for="music">Music Band</label>
+      </div>
+      <div>
+        <input type="checkbox" id="drama" name="events[]" value="drama" />
+        <label for="drama">Drama / Skit</label>
+      </div>
+      <div>
+        <input type="checkbox" id="painting" name="events[]" value="painting" />
+        <label for="painting">Painting / Art</label>
+      </div>
+      <div>
+        <input type="checkbox" id="photography" name="events[]" value="photography" />
+        <label for="photography">Photography</label>
+      </div>
+      <div>
+        <input type="checkbox" id="coding" name="events[]" value="coding" />
+        <label for="coding">Coding Contest</label>
+      </div>
+      <div>
+        <input type="checkbox" id="quiz" name="events[]" value="quiz" />
+        <label for="quiz">Quiz Competition</label>
+      </div>
+      <div>
+        <input type="checkbox" id="debate" name="events[]" value="debate" />
+        <label for="debate">Debate</label>
+      </div>
+      <div>
+        <input type="checkbox" id="sports_football" name="events[]" value="sports_football" />
+        <label for="sports_football">Sports - Football</label>
+      </div>
+      <div>
+        <input type="checkbox" id="sports_basketball" name="events[]" value="sports_basketball" />
+        <label for="sports_basketball">Sports - Basketball</label>
+      </div>
+      <div>
+        <input type="checkbox" id="sports_chess" name="events[]" value="sports_chess" />
+        <label for="sports_chess">Sports - Chess</label>
+      </div>
+      <div>
+        <input type="checkbox" id="fashion" name="events[]" value="fashion" />
+        <label for="fashion">Fashion Show</label>
+      </div>
+      <div>
+        <input type="checkbox" id="writing" name="events[]" value="writing" />
+        <label for="writing">Creative Writing</label>
+      </div>
+      <div>
+        <input type="checkbox" id="gaming" name="events[]" value="gaming" />
+        <label for="gaming">Gaming Tournament</label>
+      </div>
+      <div>
+        <input type="checkbox" id="volunteer" name="events[]" value="volunteer" />
+        <label for="volunteer">Volunteering</label>
+      </div>
+    </div>
+
+    <label for="tshirt_size">T-Shirt Size *</label>
+    <select id="tshirt_size" name="tshirt_size" required>
+      <option value="">Select Size</option>
+      <option value="XS">XS</option>
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+      <option value="XXL">XXL</option>
+    </select>
+
+    <label for="emergency_contact_name">Emergency Contact Name *</label>
+    <input type="text" id="emergency_contact_name" name="emergency_contact_name" required />
+
+    <label for="emergency_contact_phone">Emergency Contact Phone *</label>
+    <input type="tel" id="emergency_contact_phone" name="emergency_contact_phone" required />
+
+    <label for="food_preference">Food Preference *</label>
+    <select id="food_preference" name="food_preference" required>
+      <option value="">Select</option>
+      <option value="vegetarian">Vegetarian</option>
+      <option value="non_vegetarian">Non-Vegetarian</option>
+      <option value="vegan">Vegan</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="accommodation">Accommodation Required?</label>
+    <select id="accommodation" name="accommodation" required>
+      <option value="">Select</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+
+    <label for="arrival_date">Expected Arrival Date</label>
+    <input type="date" id="arrival_date" name="arrival_date" />
+
+    <label for="departure_date">Expected Departure Date</label>
+    <input type="date" id="departure_date" name="departure_date" />
+
+    <label for="previous_participation">Have you participated before?</label>
+    <select id="previous_participation" name="previous_participation" required>
+      <option value="">Select</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+
+    <label for="comments">Additional Comments</label>
+    <textarea id="comments" name="comments" rows="4" placeholder="Any special requests or info"></textarea>
+
+    <button type="submit">Submit Registration</button>
+  </form>
+
+</body>
+</html>
